@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pretty_animated_text/pretty_animated_text.dart';
 import 'package:sayan_portfolio/controllers/heroSection_controller.dart';
 import 'package:sayan_portfolio/controllers/theme_controler.dart';
 import 'package:sayan_portfolio/widgets/custom_button.dart';
+import 'package:sayan_portfolio/widgets/tech_Stack.dart';
 
 class HeroSection extends StatefulWidget {
   const HeroSection({super.key});
@@ -18,17 +20,6 @@ class _HeroSectionState extends State<HeroSection>
   late AnimationController _scrollController;
   late Animation<double> _scrollAnimation;
   final HeroSectionController linkController = Get.put(HeroSectionController());
-
-  final List<String> techStack = [
-    'Flutter',
-    'Dart',
-    'HTML',
-    'CSS',
-    'Tailwind CSS',
-    'JavaScript',
-    'React JS',
-    'Python',
-  ];
 
   @override
   void initState() {
@@ -50,6 +41,17 @@ class _HeroSectionState extends State<HeroSection>
     super.dispose();
   }
 
+  final List<String> techStack = [
+    'Flutter',
+    'Dart',
+    'HTML',
+    'CSS',
+    'Tailwind CSS',
+    'JavaScript',
+    'React JS',
+    'Python',
+  ];
+
   @override
   Widget build(BuildContext context) {
     final themeController = Get.find<ThemeController>();
@@ -59,15 +61,31 @@ class _HeroSectionState extends State<HeroSection>
 
     return Obx(
       () => Container(
-        height: size.height * 0.75, // Increased height
+        constraints: BoxConstraints(
+          minHeight: size.height * 0.6,
+          maxHeight: size.height * 0.8,
+        ),
         decoration: BoxDecoration(
-          border: Border.all(width: 2, color: Colors.black),
+          border: Border.all(
+            width: 2,
+            color: themeController.isDarkMode.value
+                ? Colors.amber.shade300
+                : Colors.black,
+          ),
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
+            // Pixel-style shadow effect
             BoxShadow(
-              blurRadius: 20,
-              color: Colors.amber.shade200,
-              offset: Offset(1, 4),
+              color: Colors.amber.shade400.withOpacity(0.8),
+              offset: Offset(8, 8),
+              blurRadius: 0,
+              spreadRadius: 0,
+            ),
+            BoxShadow(
+              color: Colors.black.withOpacity(0.3),
+              offset: Offset(12, 12),
+              blurRadius: 0,
+              spreadRadius: 0,
             ),
           ],
           gradient: LinearGradient(
@@ -182,7 +200,7 @@ class _HeroSectionState extends State<HeroSection>
                                       CustomButtonWidget(
                                         btnColor: Colors.amber,
                                         btnText: 'Github',
-                                        btnicon: Icons.generating_tokens_sharp,
+                                        btnicon: FontAwesomeIcons.github,
                                         onPressed: () {
                                           linkController.openGithub();
                                         },
@@ -503,74 +521,13 @@ class _HeroSectionState extends State<HeroSection>
                               left: -300 + (_scrollAnimation.value * 600),
                               child: Row(
                                 children: [
+                                  // First set of tech stack items
                                   ...techStack.map(
-                                    (tech) => Container(
-                                      margin: EdgeInsets.symmetric(
-                                        horizontal: 20,
-                                        vertical: 15,
-                                      ),
-                                      padding: EdgeInsets.symmetric(
-                                        horizontal: 20,
-                                        vertical: 10,
-                                      ),
-                                      decoration: BoxDecoration(
-                                        color: Colors.amber,
-                                        border: Border.all(
-                                          width: 2,
-                                          color: Colors.black,
-                                        ),
-                                        borderRadius: BorderRadius.zero,
-                                        boxShadow: [
-                                          BoxShadow(
-                                            offset: Offset(3, 3),
-                                            color: Colors.black,
-                                          ),
-                                        ],
-                                      ),
-                                      child: Text(
-                                        tech,
-                                        style: GoogleFonts.pixelifySans(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black,
-                                        ),
-                                      ),
-                                    ),
+                                    (tech) => buildTechStackItem(tech),
                                   ),
                                   // Duplicate for seamless loop
                                   ...techStack.map(
-                                    (tech) => Container(
-                                      margin: EdgeInsets.symmetric(
-                                        horizontal: 20,
-                                        vertical: 15,
-                                      ),
-                                      padding: EdgeInsets.symmetric(
-                                        horizontal: 20,
-                                        vertical: 10,
-                                      ),
-                                      decoration: BoxDecoration(
-                                        color: Colors.amber,
-                                        border: Border.all(
-                                          width: 2,
-                                          color: Colors.black,
-                                        ),
-                                        borderRadius: BorderRadius.zero,
-                                        boxShadow: [
-                                          BoxShadow(
-                                            offset: Offset(3, 3),
-                                            color: Colors.black,
-                                          ),
-                                        ],
-                                      ),
-                                      child: Text(
-                                        tech,
-                                        style: GoogleFonts.pixelifySans(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black,
-                                        ),
-                                      ),
-                                    ),
+                                    (tech) => buildTechStackItem(tech),
                                   ),
                                 ],
                               ),

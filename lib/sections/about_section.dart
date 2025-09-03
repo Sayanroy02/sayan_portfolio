@@ -18,13 +18,26 @@ class AboutSection extends StatelessWidget {
       () => Container(
         width: size.width * 1,
         decoration: BoxDecoration(
-          border: Border.all(width: 2, color: Colors.black),
+          border: Border.all(
+            width: 2,
+            color: themeController.isDarkMode.value
+                ? Colors.amber.shade300
+                : Colors.black,
+          ),
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
+            // Pixel-style shadow effect
             BoxShadow(
-              blurRadius: 20,
-              color: Colors.amber.shade200,
-              offset: Offset(1, 4),
+              color: Colors.amber.shade400.withOpacity(0.8),
+              offset: Offset(8, 8),
+              blurRadius: 0,
+              spreadRadius: 0,
+            ),
+            BoxShadow(
+              color: Colors.black.withOpacity(0.3),
+              offset: Offset(12, 12),
+              blurRadius: 0,
+              spreadRadius: 0,
             ),
           ],
           gradient: LinearGradient(

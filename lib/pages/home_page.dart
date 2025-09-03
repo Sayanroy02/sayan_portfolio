@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:sayan_portfolio/controllers/theme_controler.dart';
 import 'package:sayan_portfolio/core/constants.dart';
 import 'package:sayan_portfolio/sections/about_section.dart';
+import 'package:sayan_portfolio/sections/exp.dart' show ExpStatus;
 import 'package:sayan_portfolio/sections/hero_section.dart';
 
 class HomePage extends StatelessWidget {
@@ -44,6 +45,7 @@ class HomePage extends StatelessWidget {
           children: [
             HeroSection(),
             AboutSection(),
+            ExpStatus(),
             // Add more sections here as needed
           ],
         ),
