@@ -6,6 +6,7 @@ import 'package:sayan_portfolio/core/constants.dart';
 import 'package:sayan_portfolio/sections/about_section.dart';
 import 'package:sayan_portfolio/sections/exp.dart' show ExpStatus;
 import 'package:sayan_portfolio/sections/hero_section.dart';
+import 'package:sayan_portfolio/sections/projects_section.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -46,6 +47,7 @@ class HomePage extends StatelessWidget {
             HeroSection(),
             AboutSection(),
             ExpStatus(),
+            ProjectsSection(),
             // Add more sections here as needed
           ],
         ),
