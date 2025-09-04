@@ -15,7 +15,8 @@ class FeaturedProjectsWidget extends StatelessWidget {
   final double containerImgHeight;
   final Color pNameColor;
   final Color btnColor;
-  final VoidCallback onPressed;
+  final VoidCallback onPressed1;
+  final VoidCallback onPressed2;
   const FeaturedProjectsWidget({
     required this.borderColor,
     required this.containerWidth,
@@ -27,7 +28,8 @@ class FeaturedProjectsWidget extends StatelessWidget {
     required this.containerImgHeight,
     required this.pNameColor,
     required this.btnColor,
-    required this.onPressed,
+    required this.onPressed1,
+    required this.onPressed2,
   });
 
   @override
@@ -131,20 +133,21 @@ class FeaturedProjectsWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 CustomButtonWidget(
                   btnColor: btnColor,
                   btnText: 'GitHub',
                   btnicon: FontAwesomeIcons.github,
-                  onPressed: onPressed,
+                  onPressed: onPressed1,
                   btnWidth: 100,
                 ),
+                SizedBox(width: 20),
                 CustomButtonWidget(
                   btnColor: btnColor,
                   btnText: 'Link',
                   btnicon: FontAwesomeIcons.link,
-                  onPressed: onPressed,
+                  onPressed: onPressed2,
                   btnWidth: 100,
                 ),
               ],

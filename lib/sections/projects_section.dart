@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sayan_portfolio/controllers/project_link_Controller.dart';
 import 'package:sayan_portfolio/controllers/theme_controler.dart';
 import 'package:sayan_portfolio/widgets/featured_projects_widget.dart';
+import 'package:sayan_portfolio/widgets/snackbar_widget.dart';
 
 class ProjectsSection extends StatelessWidget {
   const ProjectsSection({super.key});
@@ -10,6 +12,7 @@ class ProjectsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeController = Get.find<ThemeController>();
+    final projectlinkController = Get.put(ProjectSectionController());
     final size = MediaQuery.of(context).size;
     // Enhanced responsive breakpoints
     final isDesktop = size.width >= 1024;
@@ -90,7 +93,12 @@ class ProjectsSection extends StatelessWidget {
                             ? Colors.black
                             : Colors.white,
 
-                        onPressed: () {},
+                        onPressed1: () {
+                          projectlinkController.openGithubMegaBlog();
+                        },
+                        onPressed2: () {
+                          projectlinkController.openMegaBlog();
+                        },
                       ),
 
                       //PROJECT 2
@@ -113,7 +121,18 @@ class ProjectsSection extends StatelessWidget {
                         btnColor: themeController.isDarkMode.value
                             ? Colors.black
                             : Colors.white,
-                        onPressed: () {},
+                        onPressed1: () {
+                          projectlinkController.openGithubArtFuse();
+                        },
+                        onPressed2: () {
+                          // projectlinkController.openMegaBlog();
+                          PixelSnackbar.showError(
+                            title: "Error",
+                            message: "Live Demo is not available",
+                            isMobile: isMobile,
+                            isDarkMode: themeController.isDarkMode.value,
+                          );
+                        },
                       ),
                       //PROJECT 3
                       FeaturedProjectsWidget(
@@ -134,7 +153,18 @@ class ProjectsSection extends StatelessWidget {
                         btnColor: themeController.isDarkMode.value
                             ? Colors.black
                             : Colors.white,
-                        onPressed: () {},
+                        onPressed1: () {
+                          projectlinkController.openGithubNotify();
+                        },
+                        onPressed2: () {
+                          PixelSnackbar.showInfo(
+                            title: "Info",
+                            message:
+                                "This is not deployed as the project is under maintenence.",
+                            isMobile: isMobile,
+                            isDarkMode: themeController.isDarkMode.value,
+                          );
+                        },
                       ),
                       //Project 4
                       FeaturedProjectsWidget(
@@ -156,7 +186,12 @@ class ProjectsSection extends StatelessWidget {
                             ? Colors.black
                             : Colors.white,
 
-                        onPressed: () {},
+                        onPressed1: () {
+                          projectlinkController.openGithubSI();
+                        },
+                        onPressed2: () {
+                          projectlinkController.openSI();
+                        },
                       ),
                     ],
                   ),
@@ -201,7 +236,12 @@ class ProjectsSection extends StatelessWidget {
                         ? Colors.black
                         : Colors.white,
 
-                    onPressed: () {},
+                    onPressed1: () {
+                      projectlinkController.openGithubMegaBlog();
+                    },
+                    onPressed2: () {
+                      projectlinkController.openMegaBlog();
+                    },
                   ),
 
                   SizedBox(height: 20),
@@ -225,7 +265,18 @@ class ProjectsSection extends StatelessWidget {
                         ? Colors.black
                         : Colors.white,
 
-                    onPressed: () {},
+                    onPressed1: () {
+                      projectlinkController.openGithubArtFuse();
+                    },
+                    onPressed2: () {
+                      // projectlinkController.openMegaBlog();
+                      PixelSnackbar.showError(
+                        title: "Error",
+                        message: "Live Demo is not available",
+                        isMobile: isMobile,
+                        isDarkMode: themeController.isDarkMode.value,
+                      );
+                    },
                   ),
 
                   SizedBox(height: 20),
@@ -247,7 +298,18 @@ class ProjectsSection extends StatelessWidget {
                         ? Colors.black
                         : Colors.white,
 
-                    onPressed: () {},
+                    onPressed1: () {
+                      projectlinkController.openGithubNotify();
+                    },
+                    onPressed2: () {
+                      PixelSnackbar.showInfo(
+                        title: "Info",
+                        message:
+                            "This is not deployed as the project is under maintenence.",
+                        isMobile: isMobile,
+                        isDarkMode: themeController.isDarkMode.value,
+                      );
+                    },
                   ),
 
                   SizedBox(height: 20),
@@ -268,7 +330,12 @@ class ProjectsSection extends StatelessWidget {
                     btnColor: themeController.isDarkMode.value
                         ? Colors.black
                         : Colors.white,
-                    onPressed: () {},
+                    onPressed1: () {
+                      projectlinkController.openGithubSI();
+                    },
+                    onPressed2: () {
+                      projectlinkController.openSI();
+                    },
                   ),
                 ],
               ),
