@@ -61,8 +61,8 @@ class FeaturedProjectsWidget extends StatelessWidget {
             width: size.width,
             child: ClipRRect(
               borderRadius: BorderRadiusGeometry.only(
-                topLeft: Radius.circular(10),
-                topRight: Radius.circular(10),
+                topLeft: Radius.circular(5),
+                topRight: Radius.circular(5),
               ),
               child: Image.network(
                 projectImg,
@@ -106,7 +106,7 @@ class FeaturedProjectsWidget extends StatelessWidget {
                 ),
                 SizedBox(height: 10),
                 BlurText(
-                  text: "Desc: $projectDesc",
+                  text: projectDesc,
                   textStyle: GoogleFonts.dmSans(
                     fontSize: 20,
                     fontWeight: FontWeight.normal,
@@ -116,7 +116,7 @@ class FeaturedProjectsWidget extends StatelessWidget {
                 ),
                 SizedBox(height: 10),
                 BlurText(
-                  text: "Tech Stack: $projectStack",
+                  text: "Build with $projectStack",
                   textStyle: GoogleFonts.dmSans(
                     fontSize: 20,
                     fontWeight: FontWeight.normal,

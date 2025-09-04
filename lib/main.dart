@@ -5,6 +5,8 @@ import 'package:sayan_portfolio/core/theme.dart';
 import 'package:sayan_portfolio/pages/home_page.dart';
 
 void main() {
+  // Initialize dependencies once
+  Get.put(ThemeController());
   runApp(const MyApp());
 }
 
@@ -13,8 +15,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Initialize theme controller
-    Get.put(ThemeController());
     final themeController = Get.find<ThemeController>();
 
     return Obx(
