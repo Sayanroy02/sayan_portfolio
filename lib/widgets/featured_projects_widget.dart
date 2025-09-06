@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pretty_animated_text/pretty_animated_text.dart';
+import 'package:sayan_portfolio/controllers/theme_controler.dart';
 import 'package:sayan_portfolio/widgets/custom_button.dart';
 
 class FeaturedProjectsWidget extends StatelessWidget {
@@ -35,6 +37,7 @@ class FeaturedProjectsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final themeController = Get.find<ThemeController>();
     return Container(
       width: containerWidth,
       decoration: BoxDecoration(
@@ -43,7 +46,9 @@ class FeaturedProjectsWidget extends StatelessWidget {
         border: Border.all(width: 4, color: borderColor),
         boxShadow: [
           BoxShadow(
-            color: Colors.amber.withOpacity(0.4),
+            color: themeController.isDarkMode.value
+                ? Colors.white
+                : Colors.black,
             offset: Offset(4, 4),
             blurRadius: 0,
             spreadRadius: 0,

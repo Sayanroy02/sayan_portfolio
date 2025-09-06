@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:pretty_animated_text/pretty_animated_text.dart';
 import 'package:sayan_portfolio/controllers/theme_controler.dart';
+import 'package:sayan_portfolio/core/constants.dart';
 
 class AboutSection extends StatelessWidget {
   const AboutSection({super.key});
@@ -43,7 +44,7 @@ class AboutSection extends StatelessWidget {
           gradient: LinearGradient(
             colors: [
               themeController.isDarkMode.value
-                  ? Colors.amber.shade600
+                  ? AppColors.primaryDarkmode
                   : Colors.amber.shade400,
               themeController.isDarkMode.value ? Colors.black : Colors.white,
             ],

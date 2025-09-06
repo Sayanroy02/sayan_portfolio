@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:sayan_portfolio/controllers/theme_controler.dart';
 import 'package:sayan_portfolio/controllers/contact_controller.dart';
+import 'package:sayan_portfolio/core/constants.dart';
 
 class ContactSection extends StatelessWidget {
   const ContactSection({super.key});
@@ -44,7 +45,7 @@ class ContactSection extends StatelessWidget {
           gradient: LinearGradient(
             colors: [
               themeController.isDarkMode.value
-                  ? Colors.amber.shade600
+                  ? AppColors.primaryDarkmode
                   : Colors.amber.shade400,
               themeController.isDarkMode.value ? Colors.black : Colors.white,
             ],

@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sayan_portfolio/controllers/theme_controler.dart';
+import 'package:sayan_portfolio/core/constants.dart';
 
-Widget buildTechStackItem(String tech) {
-  final themeController = Get.find<ThemeController>();
-  // Created a map for tech stack icons and colors
-  final Map<String, Map<String, dynamic>> techStackData = {
+class TechStackWidget extends StatelessWidget {
+  final String tech;
+  final bool isSmall;
+
+  const TechStackWidget({super.key, required this.tech, this.isSmall = false});
+
+  // Tech stack data with icons and colors
+  static const Map<String, Map<String, dynamic>> _techStackData = {
     'Flutter': {
       'icon': FontAwesomeIcons.flutter,
       'color': Color(0xFF02569B), // Flutter blue
@@ -31,11 +35,11 @@ Widget buildTechStackItem(String tech) {
     },
     'JavaScript': {
       'icon': FontAwesomeIcons.js,
-      'color': Color.fromARGB(255, 0, 0, 0), // JavaScript yellow
+      'color': Color(0xFFF7DF1E), // JavaScript yellow
     },
     'React JS': {
       'icon': FontAwesomeIcons.react,
-      'color': Color.fromARGB(255, 36, 162, 197), // React cyan
+      'color': Color(0xFF61DAFB), // React cyan
     },
     'Python': {
       'icon': FontAwesomeIcons.python,
@@ -43,51 +47,54 @@ Widget buildTechStackItem(String tech) {
     },
   };
 
-  final List<String> techStack = [
-    'Flutter',
-    'Dart',
-    'HTML',
-    'CSS',
-    'Tailwind CSS',
-    'JavaScript',
-    'React JS',
-    'Python',
-  ];
-  final Map<String, dynamic>? techData = techStackData[tech];
-  final IconData icon = techData?['icon'] ?? FontAwesomeIcons.code;
-  final Color iconColor = techData?['color'] ?? Colors.grey;
+  @override
+  Widget build(BuildContext context) {
+    final themeController = Get.find<ThemeController>();
+    final Map<String, dynamic>? techData = _techStackData[tech];
+    final IconData icon = techData?['icon'] ?? FontAwesomeIcons.code;
+    final Color iconColor = techData?['color'] ?? Colors.grey;
 
-  return Obx(
-    () => Container(
-      margin: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      decoration: BoxDecoration(
-        color: Colors.amber,
-        border: Border.all(width: 2, color: Colors.black),
-        borderRadius: BorderRadius.zero,
-        boxShadow: [
-          BoxShadow(
-            offset: Offset(3, 3),
-            color: themeController.isDarkMode.value
-                ? Colors.white
-                : Colors.black,
-          ),
-        ],
-      ),
-      child: Row(
-        children: [
-          Icon(icon, color: iconColor, size: 20),
-          SizedBox(width: 8),
-          Text(
-            tech,
-            style: GoogleFonts.pixelifySans(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
+    return Obx(
+      () => Container(
+        margin: EdgeInsets.symmetric(
+          horizontal: isSmall ? 10 : 20,
+          vertical: isSmall ? 10 : 15,
+        ),
+        padding: EdgeInsets.symmetric(
+          horizontal: isSmall ? 12 : 20,
+          vertical: isSmall ? 6 : 10,
+        ),
+        decoration: BoxDecoration(
+          color: themeController.isDarkMode.value
+              ? AppColors.primaryDarkmode
+              : Colors.amber,
+          border: Border.all(width: 2, color: Colors.black),
+          borderRadius: BorderRadius.zero,
+          boxShadow: [
+            BoxShadow(
+              offset: Offset(isSmall ? 2 : 3, isSmall ? 2 : 3),
+              color: themeController.isDarkMode.value
+                  ? Colors.white
+                  : Colors.black,
             ),
-          ),
-        ],
+          ],
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(icon, color: iconColor, size: isSmall ? 16 : 20),
+            SizedBox(width: isSmall ? 6 : 8),
+            Text(
+              tech,
+              style: GoogleFonts.pixelifySans(
+                fontSize: isSmall ? 12 : 16,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
+          ],
+        ),
       ),
-    ),
-  );
+    );
+  }
 }

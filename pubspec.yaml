@@ -41,6 +41,7 @@ dependencies:
   pretty_animated_text: ^2.0.0
   font_awesome_flutter: ^10.10.0
   animated_text_kit: ^4.2.3
+  marquee: ^2.3.0
 
 dev_dependencies:
   flutter_test:
