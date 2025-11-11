@@ -159,7 +159,7 @@ class ExpStatus extends StatelessWidget {
         AnimatedTextKit(
           animatedTexts: [
             TyperAnimatedText(
-              '█',
+              '',
               textStyle: TextStyle(
                 fontSize: isDesktop
                     ? 20
